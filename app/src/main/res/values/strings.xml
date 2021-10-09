@@ -3,4 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
+    <string name="manage_your_favourite_tv_shows_and_movies">Manage your favourite tv shows and movies</string>
+    <string name="watchlist">Watchlist</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="collection">Collection</string>
+    <string name="search">Search</string>
 </resources>
