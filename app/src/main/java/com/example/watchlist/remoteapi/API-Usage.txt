@@ -1,0 +1,11 @@
+My api key - k_wxt6qvos
+
+For search in all categories
+https://imdb-api.com/en/API/SearchAll/k_wxt6qvos/expersion_to_search
+
+For specific Movie or TV show
+https://imdb-api.com/en/API/Title/k_wxt6qvos/movie_or_tv_show_id
+
+For Top250 Movies and TV shows
+Movies - https://imdb-api.com/en/API/Top250Movies/k_wxt6qvos
+TV Show - https://imdb-api.com/en/API/Top250TVs/k_wxt6qvos
