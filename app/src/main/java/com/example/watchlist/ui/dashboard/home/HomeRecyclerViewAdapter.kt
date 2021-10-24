@@ -13,7 +13,7 @@ import com.example.watchlist.R
 import com.example.watchlist.datamodel.ExploreItem
 import com.squareup.picasso.Picasso
 
-class HomeRecyclerView() : RecyclerView.Adapter<HomeRecyclerView.ViewHolder>() {
+class HomeRecyclerViewAdapter() : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
 
     companion object val DIFF_CALLBACK: DiffUtil.ItemCallback<ExploreItem> = object : DiffUtil.ItemCallback<ExploreItem>() {
         override fun areItemsTheSame(oldItem: ExploreItem, newItem: ExploreItem): Boolean {
@@ -31,7 +31,6 @@ class HomeRecyclerView() : RecyclerView.Adapter<HomeRecyclerView.ViewHolder>() {
 
         val title: TextView = view.findViewById(R.id.title_explore)
         val image: ImageView = view.findViewById(R.id.image_explore)
-        val rank: TextView = view.findViewById(R.id.rank_explore)
         val rating: TextView = view.findViewById(R.id.rating_explore)
         val btnAddToWatchlist: Button = view.findViewById(R.id.btn_add_to_watchlist)
 
@@ -47,7 +46,6 @@ class HomeRecyclerView() : RecyclerView.Adapter<HomeRecyclerView.ViewHolder>() {
         diffUtil.currentList[position].apply {
             if (this != null) {
                 holder.title.text = this.title
-                holder.rank.text = "${this.rank}"
                 holder.rating.text = "${this.imDbRating}"
 
                 Picasso.get()
@@ -58,7 +56,7 @@ class HomeRecyclerView() : RecyclerView.Adapter<HomeRecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return diffUtil.currentList.size
     }
 
     fun submitList(list: List<ExploreItem>) {
