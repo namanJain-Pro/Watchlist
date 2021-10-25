@@ -5,7 +5,6 @@ buildscript {
         nav_version = "2.3.5"
         lottieVersion = "3.4.0"
         lifecycle_version = "2.4.0-rc01"
-        picasso_version = "2.71828"
     }
     repositories {
         google()

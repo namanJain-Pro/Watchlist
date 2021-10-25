@@ -2,9 +2,10 @@ package com.example.watchlist.datamodel
 
 import com.google.gson.annotations.SerializedName
 
-data class ExploreItem(
+data class SearchItem (
     val id: String,
-    val title: String,
+    val resultType: String,
     @SerializedName("image") val imageURL: String,
-    val imDbRating: Float
+    val title: String,
+    val description: String
 )

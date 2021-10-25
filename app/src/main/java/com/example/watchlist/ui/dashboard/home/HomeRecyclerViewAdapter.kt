@@ -1,5 +1,6 @@
 package com.example.watchlist.ui.dashboard.home
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +10,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.watchlist.R
 import com.example.watchlist.datamodel.ExploreItem
-import com.squareup.picasso.Picasso
 
-class HomeRecyclerViewAdapter() : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
+class HomeRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
 
     companion object val DIFF_CALLBACK: DiffUtil.ItemCallback<ExploreItem> = object : DiffUtil.ItemCallback<ExploreItem>() {
         override fun areItemsTheSame(oldItem: ExploreItem, newItem: ExploreItem): Boolean {
@@ -48,7 +49,7 @@ class HomeRecyclerViewAdapter() : RecyclerView.Adapter<HomeRecyclerViewAdapter.V
                 holder.title.text = this.title
                 holder.rating.text = "${this.imDbRating}"
 
-                Picasso.get()
+                Glide.with(context)
                     .load(this.imageURL)
                     .into(holder.image)
             }

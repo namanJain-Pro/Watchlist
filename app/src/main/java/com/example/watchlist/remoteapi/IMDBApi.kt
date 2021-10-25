@@ -1,6 +1,6 @@
 package com.example.watchlist.remoteapi
 
-import com.example.watchlist.datamodel.ExploreItem
+import com.example.watchlist.datamodel.Explore
 import com.example.watchlist.datamodel.SearchResult
 import com.example.watchlist.datamodel.Title
 import retrofit2.Response
@@ -13,7 +13,7 @@ interface IMDBApi {
     suspend fun search(
         @Path("api_key") key: String,
         @Path("expression") exp: String
-    ) : List<SearchResult>
+    ) : Response<SearchResult>
 
     @GET("Title/{api_key}/{id}")
     suspend fun title(
@@ -24,10 +24,10 @@ interface IMDBApi {
     @GET("Top250Movies/{api_key}")
     suspend fun topMovies(
         @Path("api_key") key: String
-    ) : List<ExploreItem>
+    ) : Response<Explore>
 
     @GET("Top250TVs/{api_key}")
     suspend fun topTVShows(
         @Path("api_key") key: String
-    ) : List<ExploreItem>
+    ) : Response<Explore>
 }
