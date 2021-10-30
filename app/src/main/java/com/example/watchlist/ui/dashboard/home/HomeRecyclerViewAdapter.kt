@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,10 @@ import com.bumptech.glide.Glide
 import com.example.watchlist.R
 import com.example.watchlist.datamodel.ExploreItem
 
-class HomeRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
+class HomeRecyclerViewAdapter(
+    private val context: Context,
+    private val listener: OnClickListener
+) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
 
     companion object val DIFF_CALLBACK: DiffUtil.ItemCallback<ExploreItem> = object : DiffUtil.ItemCallback<ExploreItem>() {
         override fun areItemsTheSame(oldItem: ExploreItem, newItem: ExploreItem): Boolean {
@@ -28,13 +32,22 @@ class HomeRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapt
 
     private val diffUtil: AsyncListDiffer<ExploreItem> = AsyncListDiffer(this, DIFF_CALLBACK)
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val title: TextView = view.findViewById(R.id.title_explore)
         val image: ImageView = view.findViewById(R.id.image_explore)
         val rating: TextView = view.findViewById(R.id.rating_explore)
         val btnAddToWatchlist: Button = view.findViewById(R.id.btn_add_to_watchlist)
+        val constraintLayout: ConstraintLayout = view.findViewById(R.id.explore_constraint_layout)
 
+        init {
+            constraintLayout.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onExploreItemClick(position)
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -62,5 +75,9 @@ class HomeRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapt
 
     fun submitList(list: List<ExploreItem>) {
         diffUtil.submitList(list)
+    }
+
+    interface OnClickListener {
+        fun onExploreItemClick(position: Int)
     }
 }

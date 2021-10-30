@@ -10,11 +10,11 @@
         android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        app:menu="@menu/bottom_nav_menu"
         android:background="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/innerFragmentContainerView"
@@ -22,10 +22,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar"
-        app:navGraph="@navigation/bottom_nav_graph"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/bottom_nav_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

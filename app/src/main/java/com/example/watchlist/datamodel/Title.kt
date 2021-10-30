@@ -15,5 +15,6 @@ data class Title(
     val directorList: List<CommonEntity>,
     val starList: List<CommonEntity>,
     val actorList: List<Actor>,
-    val genres: String
+    val genres: String,
+    val imDbRating: Float
 )
