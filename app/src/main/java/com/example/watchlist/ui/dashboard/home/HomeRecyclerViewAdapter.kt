@@ -11,7 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import coil.load
 import com.example.watchlist.R
 import com.example.watchlist.datamodel.ExploreItem
 
@@ -61,10 +61,9 @@ class HomeRecyclerViewAdapter(
             if (this != null) {
                 holder.title.text = this.title
                 holder.rating.text = "${this.imDbRating}"
-
-                Glide.with(context)
-                    .load(this.imageURL)
-                    .into(holder.image)
+                holder.image.load(this.imageURL) {
+                    this.crossfade(true)
+                }
             }
         }
     }
