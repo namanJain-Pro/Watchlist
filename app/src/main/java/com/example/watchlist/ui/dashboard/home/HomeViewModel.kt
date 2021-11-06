@@ -12,31 +12,18 @@ private const val TAG = "HomeViewModel"
 
 class HomeViewModel(private val repository: Repository) : ViewModel() {
 
-    val topMovies: MutableLiveData<List<ExploreItem>> = MutableLiveData()
-    val topShows: MutableLiveData<List<ExploreItem>> = MutableLiveData()
+    val responseList: MutableLiveData<List<ExploreItem>> = MutableLiveData()
 
-    fun fetchMovies() {
+    fun fetch(type: String) {
+        Log.d(TAG, "fetch: $type")
         viewModelScope.launch {
-            val response = repository.topMovies()
+            val response = repository.others(type)
 
             if (response.isSuccessful) {
-                topMovies.value = response.body()?.items
-                Log.d(TAG, "fetchMovies: Movies fetched")
+                responseList.value = response.body()?.items
+                Log.d(TAG, "fetch: list fetched")
             } else {
-                Log.d(TAG, "fetchMovies: ${response.message()}")
-            }
-        }
-    }
-
-    fun fetchShows() {
-        viewModelScope.launch {
-            val response = repository.topTVShows()
-
-            if (response.isSuccessful) {
-                topShows.value = response.body()?.items
-                Log.d(TAG, "fetchShows: Shows fetched")
-            } else {
-                Log.d(TAG, "fetchShows: ${response.message()}")
+                Log.d(TAG, "fetch: ${response.message()}")
             }
         }
     }

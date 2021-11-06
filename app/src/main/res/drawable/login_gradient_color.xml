@@ -8,5 +8,4 @@
         android:endColor="#0852B4"
         android:startColor="#000"
         android:type="linear" />
-
 </shape>

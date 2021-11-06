@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.example.watchlist.ui.dashboard.common.TitleFragment"
+        android:name="com.example.watchlist.ui.dashboard.common.Title.TitleFragment"
         android:label="fragment_titile"
         tools:layout="@layout/fragment_titile" >
         <action

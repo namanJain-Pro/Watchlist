@@ -21,13 +21,9 @@ interface IMDBApi {
         @Path("id") id: String
     ) : Response<Title>
 
-    @GET("Top250Movies/{api_key}")
-    suspend fun topMovies(
-        @Path("api_key") key: String
-    ) : Response<Explore>
-
-    @GET("Top250TVs/{api_key}")
-    suspend fun topTVShows(
+    @GET("{type}/{api_key}")
+    suspend fun others(
+        @Path("type") type: String,
         @Path("api_key") key: String
     ) : Response<Explore>
 }

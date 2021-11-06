@@ -1,4 +1,4 @@
-package com.example.watchlist.ui.dashboard.common
+package com.example.watchlist.ui.dashboard.common.Title
 
 import android.view.LayoutInflater
 import android.view.View

@@ -1,6 +1,5 @@
 package com.example.watchlist.ui.dashboard.home
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,13 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.watchlist.Constants.Companion.GRIDLAYOUT
+import com.example.watchlist.Constants.Companion.LINEARLAYOUT
 import com.example.watchlist.R
 import com.example.watchlist.datamodel.ExploreItem
 
 class HomeRecyclerViewAdapter(
-    private val context: Context,
+    private val layoutType: String,
     private val listener: OnClickListener
 ) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
 
@@ -51,7 +52,12 @@ class HomeRecyclerViewAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_explore_item, parent, false)
+        val layoutID = when (layoutType) {
+            LINEARLAYOUT -> R.layout.layout_explore_item_classic
+            GRIDLAYOUT -> R.layout.layout_explore_item_grid
+            else -> R.layout.layout_explore_item_grid
+        }
+        val view = LayoutInflater.from(parent.context).inflate(layoutID, parent, false)
         return ViewHolder(view)
     }
 

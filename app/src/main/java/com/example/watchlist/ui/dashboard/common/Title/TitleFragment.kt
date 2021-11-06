@@ -1,4 +1,4 @@
-package com.example.watchlist.ui.dashboard.common
+package com.example.watchlist.ui.dashboard.common.Title
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -17,6 +17,8 @@ import com.example.watchlist.datamodel.Actor
 import com.example.watchlist.datamodel.CommonEntity
 import com.example.watchlist.datamodel.Title
 import com.example.watchlist.repository.Repository
+import com.example.watchlist.ui.dashboard.common.CommonViewModel
+import com.example.watchlist.ui.dashboard.common.CommonViewModelFactory
 
 private const val TAG = "TitleFragment"
 

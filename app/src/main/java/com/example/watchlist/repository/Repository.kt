@@ -9,19 +9,15 @@ import retrofit2.Response
 
 class Repository {
 
-    suspend fun search(expression: String) : Response<SearchResult> {
+    suspend fun search(expression: String): Response<SearchResult> {
         return RetrofitInstance.api.search(API_KEY, expression)
     }
 
-    suspend fun title(id: String) : Response<Title> {
+    suspend fun title(id: String): Response<Title> {
         return RetrofitInstance.api.title(API_KEY, id)
     }
 
-    suspend fun topMovies() : Response<Explore> {
-        return RetrofitInstance.api.topMovies(API_KEY)
-    }
-
-    suspend fun topTVShows() : Response<Explore> {
-        return RetrofitInstance.api.topTVShows(API_KEY)
+    suspend fun others(type: String): Response<Explore> {
+        return RetrofitInstance.api.others(type, API_KEY)
     }
 }
