@@ -1,4 +1,4 @@
-package com.example.watchlist
+package com.example.watchlist.util
 
 class Constants {
 
@@ -12,4 +12,9 @@ class Constants {
         const val LINEARLAYOUT = "Linear Layout"
         const val GRIDLAYOUT = "Grid Layout"
     }
+}
+
+enum class NetworkState {
+    NO_NETWORK,
+    NETWORK_LIVE
 }

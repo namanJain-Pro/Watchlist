@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:textColor="#B2B9B2"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:icon="@drawable/ic_baseline_more"
             app:iconGravity="end"
             app:layout_constraintBottom_toBottomOf="parent"

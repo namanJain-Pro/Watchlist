@@ -1,4 +1,4 @@
-package com.example.watchlist.util
+package com.example.watchlist.util.network
 
 import android.util.Log
 import java.io.IOException

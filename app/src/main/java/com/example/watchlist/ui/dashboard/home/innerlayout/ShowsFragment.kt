@@ -8,10 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.watchlist.Constants.Companion.GRIDLAYOUT
-import com.example.watchlist.Constants.Companion.LINEARLAYOUT
-import com.example.watchlist.Constants.Companion.MOST_POPULAR_SHOWS
-import com.example.watchlist.Constants.Companion.TOP_250_SHOW
 import com.example.watchlist.R
 import com.example.watchlist.databinding.FragmentShowsBinding
 import com.example.watchlist.datamodel.Category
@@ -24,6 +20,10 @@ import com.example.watchlist.ui.dashboard.common.bottomsheet.layout.LayoutBottom
 import com.example.watchlist.ui.dashboard.home.HomeRecyclerViewAdapter
 import com.example.watchlist.ui.dashboard.home.HomeViewModel
 import com.example.watchlist.ui.dashboard.home.HomeViewModelFactory
+import com.example.watchlist.util.Constants.Companion.GRIDLAYOUT
+import com.example.watchlist.util.Constants.Companion.LINEARLAYOUT
+import com.example.watchlist.util.Constants.Companion.MOST_POPULAR_SHOWS
+import com.example.watchlist.util.Constants.Companion.TOP_250_SHOW
 
 class ShowsFragment : Fragment(R.layout.fragment_shows),
     HomeRecyclerViewAdapter.OnClickListener,
@@ -31,6 +31,7 @@ class ShowsFragment : Fragment(R.layout.fragment_shows),
     LayoutBottomSheet.BottomSheetLayoutListener {
 
     private lateinit var binding: FragmentShowsBinding
+    private var showsList: List<ExploreItem> = listOf()
     private lateinit var viewModel: HomeViewModel
     private lateinit var adapter: HomeRecyclerViewAdapter
 
@@ -50,7 +51,8 @@ class ShowsFragment : Fragment(R.layout.fragment_shows),
 
         viewModel.responseList.observe(viewLifecycleOwner, {
             changeVisibility(true)
-            adapter.submitList(it)
+            showsList = it
+            adapter.submitList(showsList)
         })
 
         // Setting up bottom sheet for category
@@ -116,6 +118,6 @@ class ShowsFragment : Fragment(R.layout.fragment_shows),
             }
         }
         binding.showsRecyclerview.adapter = adapter
-        adapter.submitList(viewModel.responseList.value!!)
+        adapter.submitList(showsList)
     }
 }

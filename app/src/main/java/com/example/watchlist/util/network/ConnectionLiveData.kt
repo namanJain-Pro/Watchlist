@@ -1,4 +1,4 @@
-package com.example.watchlist.util
+package com.example.watchlist.util.network
 
 import android.content.Context
 import android.content.Context.CONNECTIVITY_SERVICE

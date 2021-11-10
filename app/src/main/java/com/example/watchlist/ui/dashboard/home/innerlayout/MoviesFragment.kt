@@ -8,10 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.watchlist.Constants.Companion.GRIDLAYOUT
-import com.example.watchlist.Constants.Companion.LINEARLAYOUT
-import com.example.watchlist.Constants.Companion.MOST_POPULAR_MOVIES
-import com.example.watchlist.Constants.Companion.TOP_250_MOVIES
 import com.example.watchlist.R
 import com.example.watchlist.databinding.FragmentMoviesBinding
 import com.example.watchlist.datamodel.Category
@@ -24,6 +20,10 @@ import com.example.watchlist.ui.dashboard.common.bottomsheet.layout.LayoutBottom
 import com.example.watchlist.ui.dashboard.home.HomeRecyclerViewAdapter
 import com.example.watchlist.ui.dashboard.home.HomeViewModel
 import com.example.watchlist.ui.dashboard.home.HomeViewModelFactory
+import com.example.watchlist.util.Constants.Companion.GRIDLAYOUT
+import com.example.watchlist.util.Constants.Companion.LINEARLAYOUT
+import com.example.watchlist.util.Constants.Companion.MOST_POPULAR_MOVIES
+import com.example.watchlist.util.Constants.Companion.TOP_250_MOVIES
 
 class MoviesFragment : Fragment(R.layout.fragment_movies),
     HomeRecyclerViewAdapter.OnClickListener,
@@ -31,6 +31,7 @@ class MoviesFragment : Fragment(R.layout.fragment_movies),
     LayoutBottomSheet.BottomSheetLayoutListener {
 
     private lateinit var binding: FragmentMoviesBinding
+    private var moviesList: List<ExploreItem> = listOf()
     private lateinit var viewModel: HomeViewModel
     private lateinit var adapter: HomeRecyclerViewAdapter
 
@@ -50,7 +51,8 @@ class MoviesFragment : Fragment(R.layout.fragment_movies),
 
         viewModel.responseList.observe(viewLifecycleOwner, {
             changeVisibility(true)
-            adapter.submitList(it)
+            moviesList = it
+            adapter.submitList(moviesList)
         })
 
         // Setting up bottom sheet for category
@@ -70,8 +72,8 @@ class MoviesFragment : Fragment(R.layout.fragment_movies),
         )
         val layoutBottomSheet = LayoutBottomSheet(layoutList, this)
 
-        binding.movieLayout.setImageDrawable(layoutList[0].icon)
-        binding.movieLayout.setOnClickListener {
+        binding.moviesLayout.setImageDrawable(layoutList[0].icon)
+        binding.moviesLayout.setOnClickListener {
             layoutBottomSheet.show(childFragmentManager, "LayoutBottomSheet")
         }
 
@@ -103,23 +105,23 @@ class MoviesFragment : Fragment(R.layout.fragment_movies),
         binding.moviesRecyclerview.layoutManager = when (str) {
             GRIDLAYOUT -> {
                 adapter = HomeRecyclerViewAdapter(GRIDLAYOUT, this)
-                binding.movieLayout.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_gird))
+                binding.moviesLayout.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_gird))
                 GridLayoutManager(binding.root.context, 2, RecyclerView.VERTICAL, false)
             }
 
             LINEARLAYOUT -> {
                 adapter = HomeRecyclerViewAdapter(LINEARLAYOUT, this)
-                binding.movieLayout.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_classic))
+                binding.moviesLayout.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_classic))
                 LinearLayoutManager(binding.root.context)
             }
 
             else -> {
                 adapter = HomeRecyclerViewAdapter(GRIDLAYOUT, this)
-                binding.movieLayout.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_gird))
+                binding.moviesLayout.setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_gird))
                 GridLayoutManager(binding.root.context, 2, RecyclerView.VERTICAL, false)
             }
         }
         binding.moviesRecyclerview.adapter = adapter
-        adapter.submitList(viewModel.responseList.value!!)
+        adapter.submitList(moviesList)
     }
 }

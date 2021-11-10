@@ -1,6 +1,6 @@
 package com.example.watchlist.remoteapi
 
-import com.example.watchlist.Constants.Companion.BASE_URL
+import com.example.watchlist.util.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

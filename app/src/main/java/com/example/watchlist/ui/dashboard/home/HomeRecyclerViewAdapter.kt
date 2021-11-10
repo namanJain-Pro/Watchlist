@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.watchlist.Constants.Companion.GRIDLAYOUT
-import com.example.watchlist.Constants.Companion.LINEARLAYOUT
 import com.example.watchlist.R
 import com.example.watchlist.datamodel.ExploreItem
+import com.example.watchlist.util.Constants.Companion.GRIDLAYOUT
+import com.example.watchlist.util.Constants.Companion.LINEARLAYOUT
 
 class HomeRecyclerViewAdapter(
     private val layoutType: String,

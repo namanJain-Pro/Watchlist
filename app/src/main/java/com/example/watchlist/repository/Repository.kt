@@ -1,10 +1,10 @@
 package com.example.watchlist.repository
 
-import com.example.watchlist.Constants.Companion.API_KEY
 import com.example.watchlist.datamodel.Explore
 import com.example.watchlist.datamodel.SearchResult
 import com.example.watchlist.datamodel.Title
 import com.example.watchlist.remoteapi.RetrofitInstance
+import com.example.watchlist.util.Constants.Companion.API_KEY
 import retrofit2.Response
 
 class Repository {
