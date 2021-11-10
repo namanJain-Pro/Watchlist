@@ -9,4 +9,15 @@
     <string name="profile">Profile</string>
     <string name="collection">Collection</string>
     <string name="search">Search</string>
+    <string name="image_explore">Movie or Show Title</string>
+    <string name="title_image">Title image</string>
+    <string name="plot">Plot</string>
+    <string name="director">Director</string>
+    <string name="stars">Stars</string>
+    <string name="top_cast">Top Cast</string>
+    <string name="actor_image">Actor image</string>
+    <string name="layout_changer">layout changer</string>
+    <string name="category">Category</string>
+    <string name="layout">Layout</string>
+    <string name="layout_category_icon">Layout category icon</string>
 </resources>
